@@ -3,27 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 31
     buildToolsVersion "30.0.3"
-    testFixtures {
-        enable = true
-    }
 
-    afterEvaluate {
-        publishing
-                {
-                    publications
-
-                            {
-
-                                release(MavenPublication)
-                                        {
-                                            from components.release
-                                            groupId='com.airtelsdk.thanksappsdk'
-                                            artifacts ='thanksappsdk'
-                                            version='1.0'
-                                        }
-                            }
-                }
-    }
     defaultConfig {
         applicationId "com.functionapps.mview"
         minSdkVersion 21

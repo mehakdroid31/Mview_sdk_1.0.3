@@ -72,7 +72,7 @@ public class Mview {
     private static String msisdn_;
     private static String latitude_;
     private static String longitude_;
-    private static String nosim = "No sim";`
+    private static String nosim = "No sim";
     static String product = "airtel_sdk";
     private static float uploadfiletime1 = 0F;
     private static Pinger pingResponse;
@@ -2975,7 +2975,14 @@ return obj;
                     object.put("mcc", mView_HealthStatus.sec_mcc);
                     if (mView_HealthStatus.sec_carrierName != "NA") {
                         object.put("datasim", mView_HealthStatus.sec_slot);
-                        object.put("imsi", SimInfoUtility.getSecondIMSI(fapps_ctx));
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+                            object.put("imsi", SimInfoUtility.getSecondIMSI(fapps_ctx));
+                        }
+                        else
+                        {
+                            object.put("imsi", "NA");
+
+                        }
 
                     } else {
                         object.put("datasim", "NA");
